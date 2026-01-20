@@ -26,29 +26,30 @@ A comprehensive end-to-end machine learning project focused on predicting 30-day
 ```
 Healthcare_Patient_Analysis/
 │
-├── diabetes_data/                     # Dataset directory
-│   └── diabetic_data.csv             # Main diabetes dataset (1999-2008)
+├── diabetes_data-20260119T094453Z-1-001/
+│   └── diabetes_data/
+│       └── diabetic_data.csv         # Main diabetes dataset (101,766 records, 1999-2008)
 │
-├── visualizations/                    # All visualizations
-│   ├── 01_data_overview.png          # Dataset statistics
-│   ├── 02_readmission_distribution.png
-│   ├── 03_age_distribution.png
-│   ├── 04_diagnosis_analysis.png
-│   ├── 05_admission_patterns.png
-│   ├── 06_feature_correlations.png
-│   ├── 07_missing_data_analysis.png
-│   ├── 08_model_comparison.png
-│   ├── 09_confusion_matrix.png
-│   ├── 10_roc_curves.png
-│   ├── 11_feature_importance.png
-│   ├── 12_risk_stratification.png
-│   ├── 13_business_impact.png
-│   └── 14_EXECUTIVE_DASHBOARD.png
+├── visualizations-20260119T094501Z-1-001/
+│   └── visualizations/
+│       ├── 01_target_distribution.png
+│       ├── 02_numeric_distributions.png
+│       ├── 03_categorical_distributions.png
+│       ├── 04_numeric_vs_readmission.png
+│       ├── 05_categorical_vs_readmission.png
+│       ├── 06_correlation_matrix.png
+│       ├── 07_model_comparison.png
+│       ├── 08_confusion_matrices.png
+│       ├── 09_feature_importance.png
+│       ├── 10_probability_distribution.png
+│       ├── 11_risk_stratification.png
+│       └── 12_FINAL_DASHBOARD.png
 │
-├── Healthcare_Analytics.ipynb         # Complete analysis notebook
-├── EXECUTIVE_SUMMARY.txt             # Executive report
-├── README.md                         # This file
-└── requirements.txt                  # Python dependencies
+├── Healthcare_Analytics.ipynb         # Complete Jupyter notebook with full analysis
+├── EXECUTIVE_SUMMARY.txt              # Detailed executive report
+├── README.md                          # This file
+├── LICENSE                            # MIT License
+└── requirements.txt                   # Python dependencies
 ```
 
 ---
@@ -134,29 +135,53 @@ scipy>=1.7.0
 
 ## 📊 Key Visualizations
 
-### Data Exploration
-![Data Overview](visualizations-20260119T094501Z-1-001/visualizations/01_data_overview.png)
-*Comprehensive overview of dataset statistics and patient demographics*
+### 1. Readmission Status Overview
+![Readmission Status Distribution](visualizations-20260119T094501Z-1-001/visualizations/01_target_distribution.png)
+*Overall readmission distribution: 53.9% no readmission, 34.9% readmitted after 30 days, 11.2% readmitted within 30 days*
 
-### Readmission Analysis
-![Readmission Distribution](visualizations-20260119T094501Z-1-001/visualizations/02_readmission_distribution.png)
-*Distribution of 30-day readmissions across patient population*
+### 2. Numeric Features Distribution
+![Distribution of Numeric Features](visualizations-20260119T094501Z-1-001/visualizations/02_numeric_distributions.png)
+*Comprehensive histograms showing distributions of key numeric features including hospital stay duration, lab procedures, medications, and patient demographics*
 
-### Model Performance
-![Model Comparison](visualizations-20260119T094501Z-1-001/visualizations/08_model_comparison.png)
-*Performance comparison across multiple ML algorithms*
+### 3. Categorical Features Analysis
+![Key Categorical Features](visualizations-20260119T094501Z-1-001/visualizations/03_categorical_distributions.png)
+*Demographics breakdown: Gender (54% Female, 46% Male), Race (75% Caucasian), Age groups (peak at 70-80), and top 8 primary diagnoses led by Circulatory conditions*
 
-### Feature Importance
-![Feature Importance](visualizations-20260119T094501Z-1-001/visualizations/11_feature_importance.png)
-*Top predictive features for readmission risk*
+### 4. Feature Analysis by Readmission Status
+![Numeric Features by Readmission](visualizations-20260119T094501Z-1-001/visualizations/04_numeric_vs_readmission.png)
+*Box plots comparing distributions of numeric features between readmitted and non-readmitted patients - shows higher values for readmitted patients in key metrics*
 
-### Risk Stratification
-![Risk Stratification](visualizations-20260119T094501Z-1-001/visualizations/12_risk_stratification.png)
-*Patient segmentation by readmission risk level*
+### 5. Readmission Rates by Categories
+![Readmission Rates Analysis](visualizations-20260119T094501Z-1-001/visualizations/05_categorical_vs_readmission.png)
+*Detailed breakdown of readmission rates across gender, race, age groups, diagnosis categories, and medication changes - reveals diabetes patients on medication show 11.6% readmission rate*
 
-### Executive Dashboard
-![Executive Dashboard](visualizations-20260119T094501Z-1-001/visualizations/14_EXECUTIVE_DASHBOARD.png)
-*Comprehensive executive summary with key metrics and insights*
+### 6. Feature Correlation Matrix
+![Correlation Matrix](visualizations-20260119T094501Z-1-001/visualizations/06_correlation_matrix.png)
+*Heatmap showing correlations between numeric features and readmission - strongest correlations with number_inpatient (0.17), time_in_hospital (0.04), and num_medications (0.04)*
+
+### 7. Model Performance Comparison
+![Model Comparison and ROC Curves](visualizations-20260119T094501Z-1-001/visualizations/07_model_comparison.png)
+*Side-by-side comparison of Logistic Regression vs Random Forest across all metrics, with ROC curves showing Random Forest achieving AUC=0.653*
+
+### 8. Confusion Matrices
+![Confusion Matrices](visualizations-20260119T094501Z-1-001/visualizations/08_confusion_matrices.png)
+*Detailed confusion matrices for both models - Random Forest correctly identifies 14,510 true negatives and 865 true positives with 3,573 false positives*
+
+### 9. Feature Importance Analysis
+![Top 20 Feature Importances](visualizations-20260119T094501Z-1-001/visualizations/09_feature_importance.png)
+*Random Forest feature importance ranking - number_inpatient is the strongest predictor, followed by num_lab_procedures, num_medications, and time_in_hospital*
+
+### 10. Prediction Distribution Analysis
+![Prediction Distributions](visualizations-20260119T094501Z-1-001/visualizations/10_probability_distribution.png)
+*Histograms showing predicted probability distributions for actual readmitted vs non-readmitted patients with decision threshold at 0.5*
+
+### 11. Risk Stratification Performance
+![Risk Categories](visualizations-20260119T094501Z-1-001/visualizations/11_risk_stratification.png)
+*Patient distribution across risk categories and actual readmission rates: Low Risk (4.9%), Medium Risk (9.8%), High Risk (18.1%), Very High Risk (41.5%)*
+
+### 12. Executive Analytics Dashboard
+![Complete Analytics Dashboard](visualizations-20260119T094501Z-1-001/visualizations/12_FINAL_DASHBOARD.png)
+*Comprehensive executive dashboard featuring: readmission status pie chart, age distribution, top diagnoses, model performance metrics, confusion matrix, ROC curves, feature importance rankings, and risk stratification performance*
 
 ---
 
